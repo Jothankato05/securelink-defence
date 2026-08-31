@@ -1,0 +1,304 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Securelink Defence International Limited</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#F5F8FC; --bg-tint:#EAF2FE;
+    --ink:#141C27; --ink-2:#4A5666; --ink-3:#8695A6;
+    --blue:#0072F5; --blue-deep:#004DB3; --blue-glow:#3399FF; --red:#E03B3B;
+    --line:#E5EBF2; --line-2:#D3DCE7;
+    --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --wrap:1120px; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:rgba(0,114,245,.16)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;text-wrap:balance;color:var(--ink)}
+  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.04}
+  h2{font-size:clamp(26px,3.4vw,38px);line-height:1.12}
+  h3{font-size:19px;letter-spacing:-.01em}
+  p{margin:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;
+    padding:12px 22px;border-radius:10px;border:1px solid var(--blue);background:var(--blue);color:#fff;
+    transition:background .18s,transform .18s,box-shadow .18s;cursor:pointer}
+  .btn:hover{background:var(--blue-deep);border-color:var(--blue-deep);transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(0,114,245,.45)}
+  .btn.ghost{background:transparent;color:var(--blue);border-color:var(--line-2)}
+  .btn.ghost:hover{background:var(--bg-tint);border-color:var(--blue);box-shadow:none}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;gap:24px;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+  .brand img{width:34px;height:34px;border-radius:7px;display:block}
+  .brand .wm{font-size:16.5px;font-weight:700;letter-spacing:-.01em;line-height:1.05}
+  .brand .wm small{display:block;font-size:11px;font-weight:500;color:var(--ink-3);letter-spacing:.02em}
+  .navlinks{display:flex;gap:28px}
+  .navlinks a{font-size:14.5px;color:var(--ink-2);transition:color .18s}
+  .navlinks a:hover{color:var(--ink)}
+
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+    background:radial-gradient(120% 90% at 50% -20%, var(--bg-tint), #fff 60%)}
+  .hero-in{position:relative;text-align:center;padding:76px 0 70px}
+  .hero img.mark{width:104px;height:104px;border-radius:22px;display:block;margin:0 auto 26px;
+    box-shadow:0 18px 45px -18px rgba(0,114,245,.5)}
+  .hero h1{margin:0 auto;max-width:16ch}
+  .hero h1 .accent{color:var(--blue)}
+  .hero .lede{max-width:58ch;margin:22px auto 0;color:var(--ink-2);font-size:clamp(16px,2vw,19px)}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+  .hero-meta{margin-top:46px;display:flex;justify-content:center;gap:10px 26px;flex-wrap:wrap;
+    color:var(--ink-3);font-size:13.5px}
+  .hero-meta b{color:var(--ink-2);font-weight:600}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:4px;height:4px;border-radius:50%;background:var(--blue);display:inline-block}
+
+  section{padding:88px 0}
+  .soft{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .lead{color:var(--ink-2);font-size:17px;line-height:1.72;max-width:64ch}
+  .lead+.lead{margin-top:16px}
+
+  .mission-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:start;margin-top:8px}
+  .mission-grid .big{font-size:clamp(21px,2.7vw,28px);font-weight:600;line-height:1.4;letter-spacing:-.01em}
+  .mission-grid .big .accent{color:var(--blue)}
+
+  .cards{display:grid;gap:20px;margin-top:38px}
+  .cards.c4{grid-template-columns:repeat(2,1fr)}
+  .cards.c3{grid-template-columns:repeat(3,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+  .card h3{margin-bottom:9px}
+  .card p{color:var(--ink-2);font-size:15px;line-height:1.62}
+  .soft .card{background:#fff}
+
+  .kicker{color:var(--blue);font-weight:600;font-size:14px;margin-bottom:12px}
+  .sec-head{margin-bottom:8px}
+
+  /* lifecycle: a real sequence, shown as a clean connected flow */
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:36px 0 20px}
+  .stage{padding:9px 15px;border:1px solid var(--line-2);border-radius:999px;background:#fff;
+    font-size:14px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+  .stage.key{background:var(--blue);border-color:var(--blue);color:#fff}
+  .flow .arr{color:var(--ink-3);font-size:15px}
+  .flow-note{color:var(--ink-2);font-size:15.5px;line-height:1.7;max-width:72ch}
+  .flow-note .hl{color:var(--blue);font-weight:600}
+
+  .sectors .card ul{margin:16px 0 0;padding:0;list-style:none}
+  .sectors .card li{font-size:14px;color:var(--ink-2);padding:9px 0;border-top:1px solid var(--line);
+    display:flex;gap:10px;align-items:flex-start}
+  .sectors .card li b{color:var(--blue);font-weight:700;line-height:1.5}
+
+  .ctx-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start;margin-top:8px}
+  .stats{display:grid;gap:14px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+  .stat .n{font-size:34px;font-weight:800;letter-spacing:-.03em;color:var(--blue);line-height:1;font-variant-numeric:tabular-nums}
+  .stat .l{margin-top:8px;font-size:14px;color:var(--ink-2);line-height:1.45}
+
+  .co-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:8px}
+  .facts{align-self:start;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .fact{display:flex;justify-content:space-between;gap:20px;padding:15px 20px;font-size:14.5px;border-bottom:1px solid var(--line)}
+  .fact:last-child{border-bottom:0}
+  .fact .lab{color:var(--ink-3)}
+  .fact .val{color:var(--ink);font-weight:600;text-align:right}
+
+  .cta{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-glow) 100%);text-align:center;border:0}
+  .cta h2{color:#fff;max-width:20ch;margin:0 auto 14px}
+  .cta p{color:rgba(255,255,255,.9);max-width:52ch;margin:0 auto 28px;font-size:17px}
+  .cta .btn{background:#fff;color:var(--blue);border-color:#fff}
+  .cta .btn:hover{background:#EAF2FE;border-color:#EAF2FE;color:var(--blue-deep);box-shadow:0 10px 26px -8px rgba(0,0,0,.25)}
+
+  footer{background:#fff;border-top:1px solid var(--line);padding:52px 0 40px}
+  .foot-top{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  .foot-brand{display:flex;gap:12px;align-items:center;max-width:320px}
+  .foot-brand img{width:34px;height:34px;border-radius:7px}
+  .foot-brand .wm{font-weight:700;font-size:16px}
+  .foot-brand .wm small{display:block;font-size:12px;color:var(--ink-3);font-weight:500}
+  .foot-links{display:flex;gap:44px;flex-wrap:wrap}
+  .foot-col h4{font-size:13px;color:var(--ink-3);margin:0 0 12px;font-weight:600}
+  .foot-col a{display:block;font-size:14px;color:var(--ink-2);padding:4px 0;transition:color .18s}
+  .foot-col a:hover{color:var(--blue)}
+  .foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+  .foot-bottom .disc{max-width:64ch;line-height:1.6}
+
+  @media (max-width:860px){
+    .navlinks{display:none}
+    .mission-grid,.ctx-grid,.co-grid{grid-template-columns:1fr;gap:30px}
+    .cards.c4,.cards.c3{grid-template-columns:1fr}
+    .stat .n{font-size:30px}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Securelink Defence International Limited">
+      <img src="data:image/webp;base64,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" alt="" />
+      <span class="wm">SecureLink Defence<small>International Limited</small></span>
+    </a>
+    <div class="navlinks">
+      <a href="#mission">Mission</a>
+      <a href="#platform">Platform</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#company">Company</a>
+    </div>
+    <a class="btn" href="#contact">Request a briefing</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <img class="mark" src="data:image/webp;base64,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" alt="SecureLink emblem" />
+    <h1>Emergency response infrastructure, <span class="accent">built for Africa.</span></h1>
+    <p class="lede">Detection that survives a locked screen and a dead network. Routing that reaches the right agency, in the right state, in time. Accountability from the first alert to the responder who answers it.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#contact">Request a briefing</a>
+      <a class="btn ghost" href="#platform">See the platform</a>
+    </div>
+    <div class="hero-meta">
+      <span><i class="dot"></i> <b>Abuja</b>, Nigeria</span>
+      <span><i class="dot"></i> Emergency response <b>infrastructure</b></span>
+      <span><i class="dot"></i> Built for <b>Africa</b></span>
+    </div>
+  </div>
+</header>
+
+<section id="mission">
+  <div class="wrap">
+    <div class="sec-head"><h2>When help has to arrive, nothing may fail quietly.</h2></div>
+    <div class="mission-grid">
+      <p class="big">We build the layer that carries an emergency from the person in danger to the responder who can reach them, and <span class="accent">refuses to fail in silence.</span></p>
+      <div>
+        <p class="lead">An ordinary safety app works only under ideal conditions: a lit screen, a live network, a calm hand. The moments that matter most are the opposite of that.</p>
+        <p class="lead">SecureLink is engineered for those moments. It raises an alarm from a pocket with the screen off, reaches the responsible agency even when the internet is gone, and proves, at every step, whether help has actually been engaged. A person is never told help is coming until a responder has truly accepted the case.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="sec-head"><h2>How the platform earns its trust.</h2></div>
+    <div class="cards c4">
+      <div class="card"><h3>Resilience</h3><p>Locked screens, terminated processes, aggressive battery management, and no signal at all. The failure modes that break ordinary safety products are the conditions we design against first.</p></div>
+      <div class="card"><h3>Orchestration</h3><p>An emergency is not one undifferentiated cry for help. Each incident is classified and routed to the agency that owns it, scoped to where it happened, and escalated the moment no one answers.</p></div>
+      <div class="card"><h3>Accountability</h3><p>Every incident moves through an auditable chain, from triggered to routed to delivered to acknowledged to resolved. Reaching a server is never confused with reaching a responder.</p></div>
+      <div class="card"><h3>Sovereignty</h3><p>Infrastructure for African emergencies, built and governed in Africa, with a privacy model institutions can trust and no dependence on systems that can be switched off from elsewhere.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="wrap">
+    <div class="kicker">The platform</div>
+    <div class="sec-head"><h2>SecureLink is an emergency orchestration platform.</h2></div>
+    <p class="lead">Not a panic button, but a connected system: a client that survives on the phone, a backend that routes and escalates, an offline path over GSM, and an operator platform bounded by audit. Every alert becomes a stateful incident that moves through a defined chain until someone takes responsibility for it.</p>
+    <div class="flow" role="list" aria-label="Incident lifecycle">
+      <span class="stage" role="listitem">Triggered</span><span class="arr">&rsaquo;</span>
+      <span class="stage" role="listitem">Received</span><span class="arr">&rsaquo;</span>
+      <span class="stage" role="listitem">Triaged</span><span class="arr">&rsaquo;</span>
+      <span class="stage" role="listitem">Routed</span><span class="arr">&rsaquo;</span>
+      <span class="stage" role="listitem">Delivered</span><span class="arr">&rsaquo;</span>
+      <span class="stage key" role="listitem">Acknowledged</span><span class="arr">&rsaquo;</span>
+      <span class="stage" role="listitem">Responding</span><span class="arr">&rsaquo;</span>
+      <span class="stage" role="listitem">On scene</span><span class="arr">&rsaquo;</span>
+      <span class="stage" role="listitem">Resolved</span>
+    </div>
+    <p class="flow-note">If acknowledgement does not come in time, the incident <span class="hl">escalates automatically</span>, paging a widening circle of responders until the case is owned. Routing tells you who should come; this is what makes sure someone does.</p>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="sec-head"><h2>What the platform is engineered to do.</h2></div>
+    <div class="cards c4">
+      <div class="card"><h3>Raise the alarm without the screen</h3><p>Hardware-key and motion triggers that fire from a pocket, a persistent guard that resists being killed by the operating system, and recovery after reboot, validated against the Android devices most common across the continent.</p></div>
+      <div class="card"><h3>An alert when the network is gone</h3><p>When data fails, a structured alert travels over GSM to a shared alert network and to the user's guardians, with location captured on the device, so the coordinates are real even with no connection.</p></div>
+      <div class="card"><h3>Follow a moving emergency</h3><p>Tracking continues after the first alert, so a responder navigates to where a person is now, not a pin frozen where the incident began, with short audio captured as it unfolds.</p></div>
+      <div class="card"><h3>Privacy institutions can sign</h3><p>Operators see incident metadata, never victim content. Location, audio, and movement trails require a written reason, a time limit, and an entry in a permanent audit log, defensible to agencies and regulators alike.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sectors" class="sectors">
+  <div class="wrap">
+    <div class="sec-head"><h2>Who the infrastructure serves.</h2></div>
+    <div class="cards c3">
+      <div class="card"><h3>Government and agencies</h3><p>A high-quality incident source and coordination layer that feeds authorised response channels.</p>
+        <ul><li><b>&mdash;</b> Structured incident intake</li><li><b>&mdash;</b> Cross agency routing</li><li><b>&mdash;</b> Response time accountability</li></ul></div>
+      <div class="card"><h3>Enterprise and fleets</h3><p>Duty of care and rapid response for the people, vehicles, and sites an organisation is responsible for.</p>
+        <ul><li><b>&mdash;</b> Lone worker and driver distress</li><li><b>&mdash;</b> Site and command centre integration</li><li><b>&mdash;</b> Audit reports for compliance</li></ul></div>
+      <div class="card"><h3>Communities</h3><p>Protection that reaches ordinary people, including where connectivity and formal response are thin.</p>
+        <ul><li><b>&mdash;</b> Offline SMS and feature phone paths</li><li><b>&mdash;</b> Guardian and proximity alerts</li><li><b>&mdash;</b> Local language, low data design</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="context" class="soft">
+  <div class="wrap">
+    <div class="sec-head"><h2>Aligned with a national priority.</h2></div>
+    <div class="ctx-grid">
+      <div>
+        <p class="lead">Nigeria is consolidating emergency coordination around a single national number, 112, with a multi-agency implementation structure and Emergency Communications Centres established across the country.</p>
+        <p class="lead">SecureLink does not set out to replace that architecture. Its purpose is to complement it, to be a trusted incident source and orchestration layer that strengthens the national response ecosystem and helps organisations run their own emergency workflows within it. The opportunity is to work with the emergency ecosystem, not around it.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">112</div><div class="l">Nigeria's national emergency number, adopted at policy level in 2026</div></div>
+        <div class="stat"><div class="n">36+1</div><div class="l">States and the FCT the routing model scopes incidents across</div></div>
+        <div class="stat"><div class="n">5</div><div class="l">Response services incidents are classified and routed to</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="wrap">
+    <div class="sec-head"><h2>Securelink Defence International Limited.</h2></div>
+    <div class="co-grid">
+      <div>
+        <p class="lead">Founded in Abuja, Nigeria, Securelink Defence International Limited develops emergency response infrastructure for the conditions the continent actually presents: unreliable connectivity, fragmented response, and the need for systems that hold when it matters most.</p>
+        <p class="lead">We build deliberately, proving one complete emergency workflow in the real world, measuring it, and making it reliable before we scale it. Trust in this field is earned in outcomes, not features.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="lab">Headquarters</span><span class="val">Abuja, Nigeria</span></div>
+        <div class="fact"><span class="lab">Founder</span><span class="val">Jothan Jerry Kato</span></div>
+        <div class="fact"><span class="lab">Focus</span><span class="val">Emergency response infrastructure</span></div>
+        <div class="fact"><span class="lab">Flagship</span><span class="val">SecureLink platform</span></div>
+        <div class="fact"><span class="lab">Posture</span><span class="val">Sovereign, privacy governed, audited</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="wrap">
+    <h2>Request a confidential briefing.</h2>
+    <p>For agencies, enterprises, and partners evaluating emergency response infrastructure. We will walk you through the platform, the operating model, and a deployment path.</p>
+    <a class="btn" href="mailto:primerscorperation@gmail.com?subject=Securelink%20Defence%20briefing%20request">Contact Securelink Defence</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="data:image/webp;base64,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" alt="" />
+        <span class="wm">SecureLink Defence<small>International Limited &middot; Abuja, Nigeria</small></span>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col"><h4>Platform</h4><a href="#platform">Overview</a><a href="#sectors">Sectors</a><a href="#context">Context</a></div>
+        <div class="foot-col"><h4>Company</h4><a href="#mission">Mission</a><a href="#company">About</a><a href="#contact">Contact</a></div>
+        <div class="foot-col"><h4>Office</h4><a href="#top">Abuja, Nigeria</a><a href="mailto:primerscorperation@gmail.com">Email us</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Securelink Defence International Limited. All rights reserved.</span>
+      <span class="disc">Securelink Defence International Limited provides emergency response technology and coordination infrastructure. It is not an emergency service and does not replace official emergency numbers.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
