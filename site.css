@@ -88,7 +88,7 @@ p{margin:0}
 
 .triggers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
 .trig{padding:30px 26px;border:1px solid var(--night-line);border-radius:20px;background:linear-gradient(180deg,rgba(31,123,255,.08),rgba(255,255,255,.01))}
-.trig svg{width:30px;height:30px;fill:none;stroke:var(--glow);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:22px}
+.trig .tn{display:block;font-family:var(--display);font-size:13px;font-weight:600;color:var(--glow);letter-spacing:.04em;margin-bottom:22px}
 .trig h3{font-size:18px;margin-bottom:8px}
 .trig p{color:var(--night-ink-2);font-size:15px;line-height:1.6}
 
